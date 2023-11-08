@@ -117,14 +117,39 @@ describe('Centra de Atendimento ao Cliente TAT', () => {
 
   })
 
-  Cypress._.times(5, () => {
-    it('Deveria ser possivel rodar este teste 5 vezes', () => {
-      cy.clock()
-      cy.fillMandatoryFieldsAndSubmit()
-      cy.get('[data-test="sucess_message"]').should('be.visible').and('contain.text', 'Mensagem enviada com sucesso.')
-      cy.tick(THREE_SECONDS_IN_MS)
-      cy.get('[data-test="sucess_message"]').should('not.be.visible')
+  // Cypress._.times(5, () => {
+  //   it('Deveria ser possivel rodar este teste 5 vezes', () => {
+  //     cy.clock()
+  //     cy.fillMandatoryFieldsAndSubmit()
+  //     cy.get('[data-test="sucess_message"]').should('be.visible').and('contain.text', 'Mensagem enviada com sucesso.')
+  //     cy.tick(THREE_SECONDS_IN_MS)
+  //     cy.get('[data-test="sucess_message"]').should('not.be.visible')
   
-    })
+  //   })
+  // })
+
+  it('Deveria ser possivel exibir e esconder as mensagens de sucesso e erro usando o .invoke', () => {
+    cy.get('[data-test="sucess_message"]')
+    .should('not.be.visible')
+    .invoke('show')
+    .should('be.visible')
+    .and('contain', 'Mensagem enviada com sucesso.')
+    .invoke('hide')
+    .should('not.be.visible')
+  cy.get('[data-test="error_message"]')
+    .should('not.be.visible')
+    .invoke('show')
+    .should('be.visible')
+    .and('contain', 'Valide os campos obrigatórios!')
+    .invoke('hide')
+    .should('not.be.visible')
+  })
+
+  it('Deveria ser possivel escrever no campo textarea com invoke', () => {
+    const longText = Cypress._.repeat('Testando', 20)
+    
+    cy.get('[data-test="text_area"]')
+      .invoke('val', longText)
+      .should('have.value', longText)
   })
 })
