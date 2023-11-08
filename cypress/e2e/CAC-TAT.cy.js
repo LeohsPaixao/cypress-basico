@@ -118,7 +118,7 @@ describe('Centra de Atendimento ao Cliente TAT', () => {
   })
 
   Cypress._.times(5, () => {
-    it.only('Deveria ser possivel rodar este teste 5 vezes', () => {
+    it('Deveria ser possivel rodar este teste 5 vezes', () => {
       cy.clock()
       cy.fillMandatoryFieldsAndSubmit()
       cy.get('[data-test="sucess_message"]').should('be.visible').and('contain.text', 'Mensagem enviada com sucesso.')
