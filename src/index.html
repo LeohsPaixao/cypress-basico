@@ -13,10 +13,10 @@
       <p id="subtitle">Forneça o máximo de informações, por favor.</p>
       <br />
     </div>
-    <span class="success">
+    <span class="success" data-test="sucess_message">
       <strong>Mensagem enviada com sucesso.</strong>
     </span>
-    <span class="error">
+    <span class="error" data-test="error_message">
       <strong>Valide os campos obrigatórios!</strong>
     </span>
     <div id="white-background">
@@ -25,26 +25,26 @@
         <fieldset class="group">
           <div class="field">
             <label for="firstName"><strong>Nome</strong><span class="required-mark"> (obrigatório)</span></label>
-            <input type="text" name="firstName" id="firstName" required />
+            <input type="text" name="firstName" id="firstName" data-test="firtsName" required />
           </div>
           <div class="field">
             <label for="lastName"><strong>Sobrenome</strong><span class="required-mark"> (obrigatório)</span></label>
-            <input type="text" name="lastName" id="lastName" required />
+            <input type="text" name="lastName" id="lastName" data-test="lastName" required />
           </div>
         </fieldset>
         <fieldset class="group">
           <div class="field">
             <label for="email"><strong>E-mail</strong><span class="required-mark"> (obrigatório)</span></label>
-            <input type="email" name="email" id="email" required />
+            <input type="email" name="email" id="email" data-test="email" required />
           </div>
           <div class="field">
             <label for="phone"><strong>Telefone</strong><span class="phone-label-span required-mark"> (obrigatório)</span></label>
-            <input type="number" name="phone" id="phone" />
+            <input type="tel" name="phone" id="phone" data-test="phone" pattern="[0-9]{10}" />
           </div>
         </fieldset>
         <div class="field">
           <label for="product"><strong>Produto</strong></label>
-          <select id="product">
+          <select id="product" data-test="product">
             <option selected disabled value="">Selecione</option>
             <option value="blog">Blog</option>
             <option value="cursos">Cursos</option>
@@ -52,7 +52,7 @@
             <option value="youtube">YouTube</option>
           </select>
         </div>
-        <div id="support-type" class="field">
+        <div id="support-type" data-test="service_type" class="field">
           <label><strong>Tipo de atendimento</strong></label>
           <label>
             <input type="radio" name="atendimento-tat" value="ajuda" checked />Ajuda
@@ -68,24 +68,24 @@
           <div id="check">
             <label><strong>Qual seu meio de contato preferencial?</strong></label>
             <br />
-            <input type="checkbox" id="email-checkbox" name="email" value="email" />
+            <input type="checkbox" id="email-checkbox" data-test="email_preferential" name="email" value="email" />
             <label for="email">E-mail</label>
-            <input type="checkbox" id="phone-checkbox" name="phone" value="phone" />
+            <input type="checkbox" id="phone-checkbox" data-test="phone_preferential" name="phone" value="phone" />
             <label for="phone">Telefone</label>
           </div>
         </fieldset>
         <div class="field">
           <br />
           <label><strong>Como podemos te ajudar?</strong><span class="required-mark"> (obrigatório)</span></label>
-          <textarea row="6" id="open-text-area" name="open-text-area" required></textarea>
+          <textarea row="6" id="open-text-area" data-test="text_area" name="open-text-area" required></textarea>
         </div>
         <div class="field">
           <label><strong>Adicione um anexo</strong></label>
-          <input id="file-upload" type="file">
+          <input id="file-upload" data-test="upload" type="file">
         </div>
-        <button type="submit" class="button">Enviar</button>
+        <button type="submit" data-test="button" class="button">Enviar</button>
         <div id="privacy">
-          <a href="privacy.html" target="_blank">Política de Privacidade</a>
+          <a href="privacy.html" data-test="privacy" target="_blank">Política de Privacidade</a>
         </div>
       </form>
     </div>
