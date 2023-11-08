@@ -2,6 +2,8 @@
 
 describe('Centra de Atendimento ao Cliente TAT', () => {
   beforeEach(() => cy.visit('../../src/index.html'))
+
+  const THREE_SECONDS_IN_MS = 3000;
   
   it('Deveria ser possivel visualizar o titulo da pagina', () => {
     cy.title().should('be.equal', 'Central de Atendimento ao Cliente TAT')
@@ -95,5 +97,23 @@ describe('Centra de Atendimento ao Cliente TAT', () => {
   it('Deveria ser possivel visualizar a politica de privacidade', () => {
     cy.get('[data-test="privacy"]').invoke('removeAttr', 'target').click()
     cy.get('#title').should('contain.text' ,'CAC TAT - Política de privacidade')
+  })
+
+  it('Deveria ser possivel exibir a mensagem de erro por 3 segundos', () => {
+    cy.clock()
+    cy.get('[data-test="button"]').click()
+    cy.get('[data-test="error_message"]').should('be.visible').and('contain.text', 'Valide os campos obrigatórios!')
+    cy.tick(THREE_SECONDS_IN_MS)
+    cy.get('[data-test="error_message"]').should('not.be.visible')
+
+  })
+
+  it('Deveria ser possivel exibir a mensagem de erro por 3 segundos', () => {
+    cy.clock()
+    cy.fillMandatoryFieldsAndSubmit()
+    cy.get('[data-test="sucess_message"]').should('be.visible').and('contain.text', 'Mensagem enviada com sucesso.')
+    cy.tick(THREE_SECONDS_IN_MS)
+    cy.get('[data-test="sucess_message"]').should('not.be.visible')
+
   })
 })
