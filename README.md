@@ -1,4 +1,4 @@
-# cypress-basico-v2
+# cypress-basico
 
 Projeto simples de um curso básico do Cypress, versão 13.4.0.
 
