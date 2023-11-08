@@ -108,7 +108,7 @@ describe('Centra de Atendimento ao Cliente TAT', () => {
 
   })
 
-  it('Deveria ser possivel exibir a mensagem de erro por 3 segundos', () => {
+  it('Deveria ser possivel exibir a mensagem de sucesso por 3 segundos', () => {
     cy.clock()
     cy.fillMandatoryFieldsAndSubmit()
     cy.get('[data-test="sucess_message"]').should('be.visible').and('contain.text', 'Mensagem enviada com sucesso.')
